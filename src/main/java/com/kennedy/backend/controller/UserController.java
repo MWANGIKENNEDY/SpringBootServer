@@ -24,6 +24,11 @@ public class UserController {
     public ResponseEntity<Object> users(){
         return new ResponseEntity<>(userService.getAllUsers(),HttpStatus.OK);
     }
+    //get one record
+    @RequestMapping(value="/api/users/{id}",method=RequestMethod.GET)
+    public ResponseEntity<Object> getOneUser(@PathVariable("id") Long id){
+        return new ResponseEntity<>(userService.getOneUser(id),HttpStatus.OK);
+    }
     //CREATE A NEW USER
     @RequestMapping(value="/api/users/",method=RequestMethod.POST)
     public ResponseEntity<Object> registerUser(@RequestBody UserModel userModel){
